@@ -21,6 +21,25 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Mengelola User
+
+Fitur kelola user tersedia untuk akun admin di halaman `/users`. Admin dapat melihat daftar dan detail user, menambah akun, mengubah nama/email/password, serta menghapus user. Password baru minimal 8 karakter dan harus dikonfirmasi. Akun admin yang sedang digunakan dan admin terakhir tidak dapat dihapus.
+
+Untuk mengaktifkan fitur setelah menarik perubahan ini:
+
+1. Jalankan migrasi database: `php artisan migrate`.
+2. Jadikan akun yang sudah ada sebagai admin:
+
+   ```bash
+   php artisan users:make-admin email@contoh.com
+   ```
+
+   Jika akun tersebut belum ada, jawab **yes** saat command menawarkan untuk membuatnya, lalu isi nama dan password admin.
+
+3. Login menggunakan akun admin dan pilih **Kelola User** di dashboard.
+
+Hanya admin yang bisa membuka halaman kelola user. User biasa tidak dapat memberikan hak admin kepada dirinya sendiri melalui formulir CRUD.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.

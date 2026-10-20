@@ -128,7 +128,7 @@
 
         .info-card .label {
             font-size: 12px;
-            color: #5EC8E8;
+            color: #2E7A9C;
             font-weight: 600;
             margin-bottom: 4px;
         }
@@ -177,8 +177,8 @@
     <nav class="navbar">
         <div class="logo">🏖️ PKL Login App</div>
         <div class="nav-links">
-            <a href="/dashboard">Beranda</a>
-            <form method="POST" action="/logout" style="margin:0;">
+            <a href="{{ route('user.dashboard') }}">Beranda</a>
+            <form method="POST" action="{{ route('logout') }}" style="margin:0;">
                 @csrf
                 <button type="submit">Logout</button>
             </form>

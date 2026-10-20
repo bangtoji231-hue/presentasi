@@ -18,8 +18,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-     'name',
-      'email',
+        'name',
+        'email',
         'password',
     ];
 
@@ -41,6 +41,8 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            // Password otomatis di-hash; is_admin diperlakukan sebagai boolean.
+            'is_admin' => 'boolean',
             'password' => 'hashed',
         ];
     }

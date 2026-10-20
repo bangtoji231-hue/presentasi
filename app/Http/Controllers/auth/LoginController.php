@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,15 +15,19 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-       
         $credentials = $request->validate([
-    'email' => ['required', 'email'],
-    'password' => ['required'],
-]);
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            $dashboardRoute = $request->user()->is_admin
+                ? 'admin.dashboard'
+                : 'user.dashboard';
+
+            return redirect()->intended(route($dashboardRoute));
         }
 
         return back()->withErrors([
@@ -36,6 +40,7 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }
