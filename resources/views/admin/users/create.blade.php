@@ -21,7 +21,7 @@
         <div class="field">
             <label for="password">Password</label>
             <input id="password" name="password" type="password" minlength="8" required>
-            <p class="hint">Minimal 8 karakter bosku.</p>
+            <p class="hint">Minimal 8 karakter.</p>
         </div>
 
         <div class="field">
